@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |  New Product Page
+      a.btn.btn-default.btn-sm(href='/users/logout') Logout
+    .row(style='padding-bottom:10px')
+      form(action="/users/product/create", method="post")
+        .col-sm-12
+          label(for="Add title") Title
+        .col-sm-12
+          input(type="text", name="title", value='',class='form-control')
+        .col-sm-12
+          label(for="Add Price") Price
+        .col-sm-12
+          input(type="text", name="price", value='',class='form-control')
+        .col-sm-12
+          label(for="Add Category") Category
+        .col-sm-12
+          input(type="text", name="category", value='',class='form-control')
+        .col-sm-6.pad-t10
+          input(type="submit", name="name", value="Add product", class='btn btn-default btn-success btn-block')
+        .col-sm-6.pad-t10
+          a(href="/users/product/index", class="btn btn-default btn-danger btn-block") Cancel

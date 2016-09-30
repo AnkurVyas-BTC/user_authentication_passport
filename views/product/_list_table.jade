@@ -1,0 +1,47 @@
+mixin get_sort_class(current_sort, sort_by, sort_order)
+  if current_sort == sort_by
+    - sortClass = sort_order == 'ASC' ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'
+    span(class="glyphicon " + sortClass + " pull-right text-info")
+
+.col-sm-12
+  h2.text-info Product list
+  table.table.table-bordered.table-striped.product_table
+    tr
+      th#title(width='40%')
+        ="Title"
+        +get_sort_class('title', sort_by, sort_order)
+      th#price(width='10%')
+        ="Price"
+        +get_sort_class('price', sort_by, sort_order)
+      th#category(width='20%')
+        ="Category"
+        +get_sort_class('category', sort_by, sort_order)
+      th#createdAt(width='20%')
+        ="Created"
+        +get_sort_class('createdAt', sort_by, sort_order)
+      th.text-center(width='10%') Actions
+    for product in products
+      tr
+        td
+          = product.title
+        td
+          = product.price
+        td
+          = product.category
+        td
+          = strftime('%d %b , %I:%M:%S %p', product.createdAt)
+        td.text-center
+          a(href="/users/product/" + product.id  +"/edit",class="pad-r15 text-success")
+            span.glyphicon.glyphicon-pencil
+          a(href="/users/product/" + product.id  +"/delete",class="text-danger")
+            span.glyphicon.glyphicon-remove
+
+.col-sm-12
+  ul.pagination
+    - for(let i=1; i<=total_pages;i++)
+      if current_page == i
+        li
+          a#current_page(href="javascript:void(0);", class="pad-r15", style="text-decoration:underline;color:red;")= i
+      else
+        li
+          a(href="/users/product/index?page=" + i + "&sort_by="+sort_by + "&sort_order="+sort_order,class="pad-r15")= i

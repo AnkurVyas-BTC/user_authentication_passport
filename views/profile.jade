@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |  Profile Page
+      a.btn.btn-default.btn-sm(href='/users/logout') Logout
+    .row
+      // LOCAL INFORMATION
+      .col-sm-12
+        .well
+          h3
+            span.fa.fa-user
+            |  Local
+          .col-sm-12
+            strong Id&nbsp;&nbsp;
+            span
+              = user.id
+          .col-sm-12
+            strong Email&nbsp;&nbsp;
+            span
+              = user.email
+          .col-sm-12
+            strong Password&nbsp;&nbsp;
+            span
+              = user.password
+    .row(style='padding-bottom:10px')
+      .col-sm-12
+        a(href="/users/product/index", class="btn btn-default btn-success btn-block") Product List

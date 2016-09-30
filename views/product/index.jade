@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |  Product List
+      a.btn.btn-default.btn-sm(href='/users/logout') Logout
+    .row.pad-t10
+      .col-sm-6
+        a(href="/users/product/new", class="btn btn-default btn-success btn-block") Add product
+      .col-sm-6
+        a(href="/users/profile", class="btn btn-default btn-primary btn-block") Show profile
+    .row.pad-t10.clearfix#product-list-table
+      include _list_table
+
+  input(type="hidden", name="sort_by", value="createdAt", id='sort_by')
+  input(type="hidden", name="sort_order", value="ASC", id='sort_order')
+    
