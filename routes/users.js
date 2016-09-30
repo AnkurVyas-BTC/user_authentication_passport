@@ -25,6 +25,7 @@ router.post('/login', passport.authenticate('local-login', {
   failureFlash: true // allow flash messages
 }));
 
+/* SignUp path for user. */
 router.get('/signup', function(req, res, next) {
   res.render('signup', {
     title: 'User SignUp',
